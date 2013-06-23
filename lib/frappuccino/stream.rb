@@ -14,6 +14,7 @@ require 'frappuccino/stream/zip'
 require 'frappuccino/stream/drop'
 require 'frappuccino/stream/scan'
 require 'frappuccino/stream/take'
+require 'frappuccino/stream/partition'
 
 def not_implemented(m, message)
   define_method m do |*args, &blk|
@@ -84,6 +85,10 @@ module Frappuccino
 
     def scan(zero, &blk)
       Scan.new(self, zero, &blk)
+    end
+
+    def partition(n)
+      Partition.new(self, n)
     end
 
     def on_value(&blk)
