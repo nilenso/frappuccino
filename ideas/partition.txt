@@ -1,0 +1,42 @@
+
+haskell `partition` is similar to ruby's partition...somehow
+so maybe haskellh as a different name for clojure's partition
+
+what if we did `partition` as a thing that splits a stream into
+two streams?
+
+all these other methods that also belong to Enumerable are
+just regularly defined flatly, so does introducing
+a StreamEnumberable (if it makes sense) mean that they'll move
+into it?
+
+.. we would create StreamEnumerator, not StreamEnumerable,
+ight?
+...we can't implement things like #each, because they dont' make
+ense ...we'djust have the Enumerator thingies for delayed block
+rocesisng 
+
+you're right, I keep confusing Enumerable and Enumberator fsr
+
+three things:
+partition (ruby kind)
+partition (clojure kind)
+partition-by (clojure kind)
+
+Enumerable#partition vs. partition-by:
+- do we return two streams like below?
+- or do we do the partition-by thing and just have an infinite
+sequence of things which are chopped up in to partitions?
+
+stream.partition(3) { |s| s.zig? }.first
+stream.partition(3) { |s| s.zig? }.last
+
+
+I think we should do all 3:
+`partition` (ruby/haskell partition) -> 2 streams
+`split-every`      (clojure partition) -> 1 stream
+`split-by`   (clojure partition-by) -> 1 choppy stream
+
+
+still confused as how p-by isn't the same as Enumberable#p (&blk)
+p-by
