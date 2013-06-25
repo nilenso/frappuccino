@@ -87,8 +87,8 @@ module Frappuccino
       Scan.new(self, zero, &blk)
     end
 
-    def partition(n)
-      Partition.new(self, n)
+    def split_every(n)
+      SplitEvery.new(self, n)
     end
 
     def on_value(&blk)
